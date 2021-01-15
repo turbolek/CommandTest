@@ -20,7 +20,12 @@ public class InteractionMovementCommand : Command
             NestedCommands.Add(basicMovementCommand);
             basicMovementCommand.Execute();
 
-
+            if (target.CollisionDetector != null)
+            {
+                ResolveCollisionCommand collisionCommand = new ResolveCollisionCommand(_movable.GetComponent<CollisionDetector>(), target.CollisionDetector);
+                NestedCommands.Add(collisionCommand);
+                collisionCommand.Execute();
+            }
         }
     }
 
