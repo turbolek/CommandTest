@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class ResolveCollisionCommand : Command
 {
@@ -12,14 +13,15 @@ public class ResolveCollisionCommand : Command
         _receiver = receiver;
     }
 
-    protected override void OnExecute()
+    protected override async Task<bool> OnExecute()
     {
         Command collisionCommand = GetCollisionCommand();
         if (collisionCommand != null)
         {
             NestedCommands.Add(collisionCommand);
-            collisionCommand.Execute();
+            return await collisionCommand.Execute();
         }
+        return false;
     }
 
     protected override void UndoSelf()

@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public abstract class Command
 {
     public bool Undone { get; private set; }
     public List<Command> NestedCommands = new List<Command>();
-    public void Execute()
+    public async Task<bool> Execute()
     {
         NestedCommands.Clear();
         Undone = false;
 
-        OnExecute();
+        return await OnExecute();
     }
 
-    protected abstract void OnExecute();
+    protected abstract Task<bool> OnExecute();
 
     public void Undo()
     {

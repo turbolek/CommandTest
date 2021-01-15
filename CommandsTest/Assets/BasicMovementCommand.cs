@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class BasicMovementCommand : Command
 {
@@ -13,10 +14,11 @@ public class BasicMovementCommand : Command
         _position = position;
     }
 
-    protected override void OnExecute()
+    protected override async Task<bool> OnExecute()
     {
         _originalPosition = _movable.transform.position;
-        MoveToPosition(_position);
+        await MoveToPosition(_position);
+        return false;
     }
 
     protected override void UndoSelf()
@@ -24,7 +26,7 @@ public class BasicMovementCommand : Command
         MoveToPosition(_originalPosition);
     }
 
-    private void MoveToPosition(Vector3 targetPosition)
+    private async Task MoveToPosition(Vector3 targetPosition)
     {
         Debug.Log("Moving " + _movable.name + " to position: " + targetPosition);
     }

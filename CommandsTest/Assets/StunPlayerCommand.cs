@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class StunPlayerCommand : Command
 {
@@ -10,9 +11,10 @@ public class StunPlayerCommand : Command
         _player = player;
     }
 
-    protected override void OnExecute()
+    protected override async Task<bool> OnExecute()
     {
         _player.Stun();
+        return false;
     }
 
     protected override void UndoSelf()

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class PlayerPlayerCollisionCommand : Command
 {
@@ -16,15 +17,16 @@ public class PlayerPlayerCollisionCommand : Command
         _attackerWins = Random.Range(0f, 1f) > 0.5f;
     }
 
-    protected override void OnExecute()
+    protected override async Task<bool> OnExecute()
     {
         Player playerToStun = GetPlayerToStun();
         if (playerToStun != null)
         {
             StunPlayerCommand stunCommand = new StunPlayerCommand(playerToStun);
             NestedCommands.Add(stunCommand);
-            stunCommand.Execute();
+            await stunCommand.Execute();
         }
+        return !_attackerWins;
     }
 
     protected override void UndoSelf()

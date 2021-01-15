@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class InteractionMovementCommand : Command
 {
@@ -12,21 +13,31 @@ public class InteractionMovementCommand : Command
         _data = data;
     }
 
-    protected override void OnExecute()
+    protected override async Task<bool> OnExecute()
     {
+        bool terminate = false;
+
         foreach (InteractionMovementData.MovementTarget target in _data.Targets)
         {
             BasicMovementCommand basicMovementCommand = new BasicMovementCommand(_movable, target.Position);
             NestedCommands.Add(basicMovementCommand);
-            basicMovementCommand.Execute();
+            terminate |= await basicMovementCommand.Execute();
 
             if (target.CollisionDetector != null)
             {
                 ResolveCollisionCommand collisionCommand = new ResolveCollisionCommand(_movable.GetComponent<CollisionDetector>(), target.CollisionDetector);
                 NestedCommands.Add(collisionCommand);
-                collisionCommand.Execute();
+                terminate |= await collisionCommand.Execute();
+            }
+
+            if (terminate)
+            {
+                Debug.Log("InteractionMovement Command terminated");
+                break;
             }
         }
+
+        return terminate;
     }
 
     protected override void UndoSelf()
