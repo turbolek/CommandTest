@@ -17,17 +17,17 @@ public class BasicMovementCommand : Command
     protected override async Task<bool> OnExecute()
     {
         _originalPosition = _movable.transform.position;
-        await MoveToPosition(_position);
+        await MoveToPosition(_position, false);
         return false;
     }
 
     protected override void UndoSelf()
     {
-        MoveToPosition(_originalPosition);
+        MoveToPosition(_originalPosition, true);
     }
 
-    private async Task MoveToPosition(Vector3 targetPosition)
+    private async Task MoveToPosition(Vector3 targetPosition, bool instant)
     {
-        Debug.Log("Moving " + _movable.name + " to position: " + targetPosition);
+        await _movable.Move(targetPosition, instant);
     }
 }

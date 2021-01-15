@@ -1930,7 +1930,6 @@ GameObject:
   - component: {fileID: 1705595728}
   - component: {fileID: 1705595727}
   - component: {fileID: 1705595726}
-  - component: {fileID: 1705595725}
   - component: {fileID: 1705595724}
   - component: {fileID: 1705595730}
   - component: {fileID: 1705595729}
@@ -1953,20 +1952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a04761d00ed17548bd62811c342079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1705595725
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705595723}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 1}
 --- !u!23 &1705595726
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2064,7 +2049,6 @@ GameObject:
   - component: {fileID: 1904903640}
   - component: {fileID: 1904903639}
   - component: {fileID: 1904903638}
-  - component: {fileID: 1904903637}
   - component: {fileID: 1904903636}
   - component: {fileID: 1904903642}
   - component: {fileID: 1904903641}
@@ -2087,20 +2071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a04761d00ed17548bd62811c342079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1904903637
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904903635}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 1}
 --- !u!23 &1904903638
 MeshRenderer:
   m_ObjectHideFlags: 0

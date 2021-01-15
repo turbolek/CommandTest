@@ -49,8 +49,21 @@ public class InputManager : MonoBehaviour
 
     private void ExecuteCommand(Command command)
     {
+        ClearUndoneCommands();
         _executedCommands.Add(command);
         command.Execute();
+    }
+
+    private void ClearUndoneCommands()
+    {
+        for (int i = _executedCommands.Count - 1; i >= 0; i--)
+        {
+            Command command = _executedCommands[i];
+            if (command.Undone)
+            {
+                _executedCommands.Remove(command);
+            }
+        }
     }
 
     private void UndoLastCommand()
