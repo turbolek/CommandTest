@@ -54,7 +54,7 @@ public class PlayerBallCollisionCommand : Command
 
     protected override void UndoSelf()
     {
-        throw new System.NotImplementedException();
+
     }
 
 }

@@ -6,15 +6,12 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
-    private Movable _playerMovable;
-
-    [SerializeField]
     private Button _undoButton;
     [SerializeField]
     private Button _redoButton;
 
     [SerializeField]
-    private CommandButton[] _commandButtons;
+    private MoveCommandFakeInputButton[] _commandButtons;
 
     private List<Command> _executedCommands = new List<Command>();
 
@@ -22,28 +19,18 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         InitButtons();
-        AssignCommands();
     }
 
-    private void AssignCommands()
-    {
-        foreach (CommandButton button in _commandButtons)
-        {
-            InteractionMovementData data = button.MovementData;
-            InteractionMovementCommand movementCommand = new InteractionMovementCommand(_playerMovable, data);
-            button.Command = movementCommand;
-        }
-    }
 
     private void InitButtons()
     {
         _undoButton.onClick.AddListener(UndoLastCommand);
         _redoButton.onClick.AddListener(RedoLastCoomand);
 
-        foreach (CommandButton button in _commandButtons)
+        foreach (MoveCommandFakeInputButton button in _commandButtons)
         {
             button.Init();
-            button.Button.onClick.AddListener(delegate { ExecuteCommand(button.Command); });
+            button.Button.onClick.AddListener(delegate { ExecuteCommand(button.GetCommand()); });
         }
     }
 
@@ -73,6 +60,7 @@ public class InputManager : MonoBehaviour
             if (!_executedCommands[i].Undone)
             {
                 _executedCommands[i].Undo();
+                break;
             }
         }
     }

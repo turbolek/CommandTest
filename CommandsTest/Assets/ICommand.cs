@@ -19,8 +19,9 @@ public abstract class Command
 
     public void Undo()
     {
-        foreach (Command nestedCommand in NestedCommands)
+        for (int i = NestedCommands.Count - 1; i >= 0; i--)
         {
+            Command nestedCommand = NestedCommands[i];
             nestedCommand.Undo();
         }
 

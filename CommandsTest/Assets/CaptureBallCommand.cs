@@ -20,5 +20,6 @@ public class CaptureBallCommand : Command
 
     protected override void UndoSelf()
     {
+        _ball.gameObject.SetActive(true);
     }
 }

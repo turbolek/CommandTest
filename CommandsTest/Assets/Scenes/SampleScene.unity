@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e54d08d91258545ad7525cdb04915a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movable: {fileID: 1705595724}
   _movementData:
     Targets:
     - Position: {x: 0, y: 0, z: 3}
@@ -480,7 +481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0814270b25464d44b2f8c091f5f9960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMovable: {fileID: 1705595724}
   _undoButton: {fileID: 1186554710}
   _redoButton: {fileID: 793803434}
   _commandButtons:
@@ -1006,7 +1006,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.8e-43, y: -4.8193707e-26, z: 7.8e-43, w: 0}
+  m_BoundingSphereOverride: {x: 2.291e-42, y: 1.01e-43, z: 980710.94, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1273,12 +1273,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e54d08d91258545ad7525cdb04915a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movable: {fileID: 1705595724}
   _movementData:
     Targets:
     - Position: {x: 0, y: 0, z: 5}
       CollisionDetector: {fileID: 1904903642}
-    - Position: {x: 0, y: 0, z: 12}
-      CollisionDetector: {fileID: 0}
+    - Position: {x: 0, y: 0, z: 11}
+      CollisionDetector: {fileID: 1904903642}
 --- !u!1 &959265099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e54d08d91258545ad7525cdb04915a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movable: {fileID: 1705595724}
   _movementData:
     Targets:
     - Position: {x: 0, y: 0, z: 5}
@@ -1972,6 +1974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e54d08d91258545ad7525cdb04915a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movable: {fileID: 1705595724}
   _movementData:
     Targets:
     - Position: {x: 0, y: 0, z: 5}

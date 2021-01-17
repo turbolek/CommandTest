@@ -25,5 +25,6 @@ public class KickBallCommand : Command
 
     protected override void UndoSelf()
     {
+
     }
 }
