@@ -34,6 +34,10 @@ public class ResolveCollisionCommand : Command
         {
             return new PlayerPlayerCollisionCommand(_initiator, _receiver);
         }
+        else if (_initiator.CollisionType == CollisionDetector.Type.Player && _receiver.CollisionType == CollisionDetector.Type.Ball)
+        {
+            return new PlayerBallCollisionCommand(_initiator, _receiver);
+        }
 
         return null;
     }
